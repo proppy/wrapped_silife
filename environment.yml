@@ -1,6 +1,7 @@
 channels:
   - litex-hub
   - conda-forge
+  - bioconda
 dependencies:
   - open_pdks.sky130a=1.0.290
   - magic
@@ -8,6 +9,11 @@ dependencies:
   - netgen
   - yosys
   - gdstk
+  - cairosvg
+  - svgutils
+  - iverilog
   - pyyaml
   - click
   - pandas
+  - tcllib
+  - snakemake
