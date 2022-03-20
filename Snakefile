@@ -10,14 +10,18 @@ runs = {
 
 rule all:
      input:
-       expand("runs/{run}/reports/final_summary_report.csv", run=runs.keys())
+       expand([
+           "runs/{run}/reports/final_summary_report.csv",
+           "runs/{run}/results/final/gds/wrapped_silife.gds"
+       ], run=runs.keys())
 
 rule harden:
      output:
-       "runs/{run}/reports/final_summary_report.csv"
+       ["runs/{run}/reports/final_summary_report.csv",
+        "runs/{run}/results/final/gds/wrapped_silife.gds"]
      params:
        override_env=lambda wildcards: runs[wildcards.run]
      conda:
        "environment.yml"
      shell:
-       "TERM=xterm PDK_ROOT=$CONDA_PREFIX/share/pdk TCLLIBPATH=$CONDA_PREFIX/lib/tcllib1.20/ OpenLane/flow.tcl -design . -tag {wildcards.run} -override_env {params.override_env} -overwrite || true"
+       "TERM=xterm PDK_ROOT=$CONDA_PREFIX/share/pdk TCLLIBPATH=$CONDA_PREFIX/lib/tcllib1.20/ OpenLane/flow.tcl -design . -tag {wildcards.run} -override_env {params.override_env} -overwrite"
