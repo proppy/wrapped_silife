@@ -55,3 +55,8 @@ set ::env(FP_IO_HTHICKNESS_MULT) 4
 # workaround for hold violations
 set ::env(PL_RESIZER_HOLD_SLACK_MARGIN) 0.3
 set ::env(GLB_RESIZER_HOLD_SLACK_MARGIN) 0.3
+
+set ::env(RUN_CV) 0
+set ::env(MISMATCHES_OK) 1
+set ::env(RUN_KLAYOUT_XOR) 0
+set ::env(RUN_KLAYOUT_DRC) 0
